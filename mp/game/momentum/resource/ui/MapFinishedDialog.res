@@ -8,7 +8,7 @@
         "ypos"          "c-150"
         "wide"          "220"
         "tall"          "215"
-        "TextFont"      "Default"
+        "TextFont"      "BigNoodleSmall"
     }
     
     "Prev_Zone"
@@ -17,8 +17,8 @@
         "fieldName"     "Prev_Zone"
         "xpos"          "2"
         "ypos"          "4"
-        "wide"          "8"
-        "tall"          "8"
+        "wide"          "16"
+        "tall"          "16"
         "scaleImage"    "1"
         "pinCorner"     "0"
         "visible"       "1"
@@ -31,11 +31,11 @@
     {
         "ControlName" "Label"
         "fieldName"  "Current_Zone"
-        "font"          "Default"//Set by "TextFont" 
-        "xpos"          "0"
+        "font"          "BigNoodleSmall"//Set by "TextFont" 
+        "xpos"          "2"
         "ypos"          "0"
         "wide"          "100"
-        "tall"          "10"//Set by font size
+        "tall"          "16"//Set by font size
         "autoResize"    "1"
         "pinCorner"     "0"
         "visible"       "1"
@@ -55,10 +55,10 @@
     {
         "ControlName"   "ImagePanel"
         "fieldName"     "Next_Zone"
-        "xpos"          "0"
+        "xpos"          "3"
         "ypos"          "0"
-        "wide"          "8"
-        "tall"          "8"
+        "wide"          "16"
+        "tall"          "16"
         "pinCorner"     "0"
         "visible"       "1"
         "enabled"       "1"
@@ -73,10 +73,10 @@
     {
         "ControlName"   "ImagePanel"
         "fieldName"     "Close_Panel"
-        "xpos"          "180"
+        "xpos"          "198"
         "ypos"          "2"
-        "wide"          "32"
-        "tall"          "32"
+        "wide"          "20"
+        "tall"          "20"
         "autoResize"    "0"
         "pinCorner"     "0"
         "visible"       "1"
@@ -88,17 +88,17 @@
     {
         "ControlName"   "ImagePanel"
         "fieldName"     "Repeat_Button"
-        "xpos"          "0"
-        "ypos"          "25"
-        "wide"          "32"
-        "tall"          "32"
+        "xpos"          "-40"
+        "ypos"          "26"
+        "wide"          "28"
+        "tall"          "28"
         "pinCorner"     "0"
         "visible"       "1"
         "enabled"       "1"
         "scaleImage"    "1"
         "image"         "loop_button_grey"
-        "pin_to_sibling" "Close_Panel"
-        "pin_to_sibling_corner" "2"
+        "pin_to_sibling" "Detach_Mouse"
+        "pin_to_sibling_corner" "4"
         "pin_corner_to_sibling" "0"
         "tooltiptext" "#MOM_MF_Restart_Map"
     }
@@ -106,17 +106,17 @@
     {
         "ControlName"   "ImagePanel"
         "fieldName"     "Replay_Icon"
-        "xpos"          "0"
-        "ypos"          "5"
-        "wide"          "32"
-        "tall"          "32"
+        "xpos"          "20"
+        "ypos"          "0"
+        "wide"          "28"
+        "tall"          "28"
         "pinCorner"     "0"
         "visible"       "1"
         "enabled"       "1"
         "scaleImage"    "1"
         "image"         "replay_icon_grey"
         "pin_to_sibling" "Repeat_Button"
-        "pin_to_sibling_corner" "2"
+        "pin_to_sibling_corner" "1"
         "pin_corner_to_sibling" "0"
         "tooltiptext" "#MOM_MF_PlayReplay"
     }
@@ -129,7 +129,7 @@
         "xpos"          "6"
         "ypos"          "12"
         "wide"          "100"
-        "tall"          "10"//Set by font size
+        "tall"          "19"//Set by font size
         "autoResize"    "1"
         "pinCorner"     "0"
         "visible"       "1"
@@ -147,9 +147,9 @@
         "fieldName"  "Zone_Enter_Time"
         "font"          "Default"//Set by "TextFont" 
         "xpos"          "0"
-        "ypos"          "0"
+        "ypos"          "-4"
         "wide"          "100"
-        "tall"          "10"//Set by font size
+        "tall"          "19"//Set by font size
         "autoResize"    "1"
         "pinCorner"     "0"
         "visible"       "1"
@@ -170,9 +170,9 @@
         "fieldName"  "Zone_Strafes"
         "font"          "Default"//Set by "TextFont" 
         "xpos"          "0"
-        "ypos"          "0"
+        "ypos"          "-4"
         "wide"          "100"
-        "tall"          "10"//Set by font size
+        "tall"          "19"//Set by font size
         "autoResize"    "1"
         "pinCorner"     "0"
         "visible"       "1"
@@ -193,9 +193,9 @@
         "fieldName"  "Zone_Jumps"
         "font"          "Default"//Set by "TextFont" 
         "xpos"          "0"
-        "ypos"          "0"
+        "ypos"          "-4"
         "wide"          "100"
-        "tall"          "10"//Set by font size
+        "tall"          "19"//Set by font size
         "autoResize"    "1"
         "pinCorner"     "0"
         "visible"       "1"
@@ -216,9 +216,9 @@
         "fieldName"  "Zone_Vel_Enter"
         "font"          "Default"//Set by "TextFont" 
         "xpos"          "0"
-        "ypos"          "0"
+        "ypos"          "-4"
         "wide"          "100"
-        "tall"          "10"//Set by font size
+        "tall"          "19"//Set by font size
         "autoResize"    "1"
         "pinCorner"     "0"
         "visible"       "1"
@@ -239,9 +239,9 @@
         "fieldName"  "Zone_Vel_Exit"
         "font"          "Default"//Set by "TextFont" 
         "xpos"          "0"
-        "ypos"          "0"
+        "ypos"          "-4"
         "wide"          "100"
-        "tall"          "10"//Set by font size
+        "tall"          "19"//Set by font size
         "autoResize"    "1"
         "pinCorner"     "0"
         "visible"       "1"
@@ -262,9 +262,9 @@
         "fieldName"  "Zone_Vel_Avg"
         "font"          "Default"//Set by "TextFont" 
         "xpos"          "0"
-        "ypos"          "0"
+        "ypos"          "-4"
         "wide"          "100"
-        "tall"          "10"//Set by font size
+        "tall"          "19"//Set by font size
         "autoResize"    "1"
         "pinCorner"     "0"
         "visible"       "1"
@@ -285,9 +285,9 @@
         "fieldName"  "Zone_Vel_Max"
         "font"          "Default"//Set by "TextFont" 
         "xpos"          "0"
-        "ypos"          "0"
+        "ypos"          "-4"
         "wide"          "100"
-        "tall"          "10"//Set by font size
+        "tall"          "19"//Set by font size
         "autoResize"    "1"
         "pinCorner"     "0"
         "visible"       "1"
@@ -308,9 +308,9 @@
         "fieldName"  "Zone_Sync1"
         "font"          "Default"//Set by "TextFont" 
         "xpos"          "0"
-        "ypos"          "0"
+        "ypos"          "-4"
         "wide"          "100"
-        "tall"          "10"//Set by font size
+        "tall"          "19"//Set by font size
         "autoResize"    "1"
         "pinCorner"     "0"
         "visible"       "1"
@@ -331,9 +331,9 @@
         "fieldName"  "Zone_Sync2"
         "font"          "Default"//Set by "TextFont" 
         "xpos"          "0"
-        "ypos"          "0"
+        "ypos"          "-4"
         "wide"          "100"
-        "tall"          "10"//Set by font size
+        "tall"          "19"//Set by font size
         "autoResize"    "1"
         "pinCorner"     "0"
         "visible"       "1"
@@ -352,17 +352,17 @@
     {
         "ControlName" "Label"
         "fieldName"  "Run_Save_Status"
-        "font"          "Default"//Set by "TextFont" 
+        "font"          "BigNoodleSmall"//Set by "TextFont" 
         "xpos"          "0"
-        "ypos"          "6"
-        "wide"          "100"
+        "ypos"          "3"
+        "wide"          "f0"
         "tall"          "10"//Set by font size
         "autoResize"    "1"
         "pinCorner"     "0"
         "visible"       "1"
         "enabled"       "1"
         "labelText"     "#MOM_MF_RunNotSaved"
-        "textAlignment" "west"
+        "textAlignment" "center"
         "dulltext"      "0"
         "brighttext"    "0"
         "pin_to_sibling"		"Zone_Sync2"
@@ -375,9 +375,9 @@
     {
         "ControlName" "Label"
         "fieldName"  "Run_Upload_Status"
-        "font"          "Default"//Set by "TextFont" 
+        "font"          "BigNoodleSmall"//Set by "TextFont" 
         "xpos"          "0"
-        "ypos"          "0"
+        "ypos"          "3"
         "wide"          "120"
         "tall"          "10"//Set by font size
         "autoResize"    "1"
@@ -398,7 +398,7 @@
     {
         "ControlName" "Label"
         "fieldName"  "XP_Gain_Cos"
-        "font"          "Default"//Set by "TextFont" 
+        "font"          "BigNoodleSmall"//Set by "TextFont" 
         "xpos"          "0"
         "ypos"          "5"
         "wide"          "120"
@@ -421,7 +421,7 @@
     {
         "ControlName" "Label"
         "fieldName"  "Cos_Level_Gain"
-        "font"          "Default"//Set by "TextFont" 
+        "font"          "BigNoodleSmall"//Set by "TextFont" 
         "xpos"          "3"
         "ypos"          "0"
         "wide"          "120"
@@ -444,7 +444,7 @@
     {
         "ControlName" "Label"
         "fieldName"  "XP_Gain_Rank"
-        "font"          "Default"//Set by "TextFont" 
+        "font"          "BigNoodleSmall"//Set by "TextFont" 
         "xpos"          "0"
         "ypos"          "0"
         "wide"          "120"
@@ -467,11 +467,11 @@
     {
         "ControlName" "Label"
         "fieldName" "Detach_Mouse"
-        "font"          "Default"//Set by "TextFont" 
+        "font"          "DefaultSmall"//Set by "TextFont" 
         "xpos"          "6"
-        "ypos"          "5"
+        "ypos"          "-2"
         "wide"          "f0"
-        "tall"          "10"//Set by font size
+        "tall"          "19"//Set by font size
         "autoResize"    "1"
         "pinCorner"     "0"
         "visible"       "1"
