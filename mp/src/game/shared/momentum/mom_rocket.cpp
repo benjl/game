@@ -22,6 +22,7 @@ BEGIN_DATADESC(CMomRocket)
 
     // Functions
     DEFINE_ENTITYFUNC(Touch),
+    DEFINE_THINKFUNC(FuseThink),
 END_DATADESC();
 #endif
 
@@ -53,6 +54,8 @@ CMomRocket::CMomRocket()
     m_flDamage = 0.0f;
     m_hOwner = nullptr;
     m_hRocketTrail = nullptr;
+    m_bOnFuse = false;
+    m_flFuseTime = 0.0f;
 #endif
 }
 
@@ -123,6 +126,8 @@ void CMomRocket::Spawn()
 
     m_takedamage = DAMAGE_NO;
     SetGravity(0.0f);
+
+    SetThink(&CMomRocket::FuseThink);
 
     SetTouch(&CMomRocket::RocketTouch);
     SetNextThink(gpGlobals->curtime);
@@ -241,6 +246,63 @@ void CMomRocket::RocketTouch(CBaseEntity *pOther)
     trace_t trace;
     memcpy(&trace, pTrace, sizeof(trace_t));
     Explode(&trace, pOther);
+}
+
+void CMomRocket::SetFuse(float flFuseLength)
+{
+    if (!m_bOnFuse) // Don't reset the fuse if it has already been set
+    {
+        m_bOnFuse = true;
+        m_flFuseTime = gpGlobals->curtime + flFuseLength;
+    }
+}
+
+void CMomRocket::ExplodeInPlace() 
+{
+    if (CNoGrenadesZone::IsInsideNoGrenadesZone(this))
+    {
+        Destroy(true);
+        return;
+    }
+
+    // Make invisible
+    SetModelName(NULL_STRING);
+    SetSolid(SOLID_NONE);
+    m_takedamage = DAMAGE_NO;
+
+    Vector vecOrigin = GetAbsOrigin();
+    CBaseEntity *pOwner = GetOwnerEntity();
+
+    float flDamage = GetDamage();
+    float flRadius = GetRadius();
+
+    // Create explosion effect with no damage
+    ExplosionCreate(vecOrigin, GetAbsAngles(), pOwner, flDamage, flRadius, false);
+
+    // Damage
+    CTakeDamageInfo info(this, pOwner, vec3_origin, vecOrigin, flDamage, GetDamageType());
+    RadiusDamage(info, vecOrigin, flRadius, CLASS_NONE, nullptr);
+
+    DestroyTrail();
+
+    m_hOwner = nullptr;
+
+    StopSound("Missile.Ignite");
+
+    // Remove the rocket
+    UTIL_Remove(this);
+}
+
+void CMomRocket::FuseThink()
+{
+    if (m_bOnFuse)
+    {
+        if (gpGlobals->curtime >= m_flFuseTime)
+        {
+            ExplodeInPlace();
+        }
+    }
+    SetNextThink(gpGlobals->curtime + 0.0151f);
 }
 
 void CMomRocket::CreateSmokeTrail()

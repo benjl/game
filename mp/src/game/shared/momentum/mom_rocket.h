@@ -35,6 +35,8 @@ class CMomRocket : public CBaseProjectile
     void Destroy(bool bNoGrenadeZone);
     void DestroyTrail();
 
+    void SetFuse(float flFuseLength);
+
     float GetRadius() { return m_flRadius; }
     float GetDamage() OVERRIDE { return m_flDamage; }
 
@@ -52,10 +54,13 @@ class CMomRocket : public CBaseProjectile
 
   protected:
     void CreateSmokeTrail();
-
+    void FuseThink();
+    void ExplodeInPlace();
     CHandle<RocketTrail> m_hRocketTrail;
     float m_flDamage;
     float m_flRadius;
+    bool m_bOnFuse;
+    float m_flFuseTime;
 
   private:
     DECLARE_DATADESC();

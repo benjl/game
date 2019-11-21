@@ -8,6 +8,7 @@
 #include "fmtstr.h"
 #include "mom_timer.h"
 #include "mom_modulecomms.h"
+#include "mom_rocket.h"
 
 #include "dt_utlvector_send.h"
 
@@ -1520,4 +1521,35 @@ bool CNoGrenadesZone::IsInsideNoGrenadesZone(CBaseEntity *pOther)
     }
 
     return false;
+}
+//-----------------------------------------------------------------------------------------------
+
+//---------- CTriggerAirpogo --------------------------------------------------------------------
+LINK_ENTITY_TO_CLASS(trigger_momentum_airpogo, CTriggerAirpogo);
+
+BEGIN_DATADESC(CTriggerAirpogo)
+    // DEFINE_KEYFIELD(m_bAffectStickies, FIELD_BOOLEAN, "AffectStickies"),
+    DEFINE_KEYFIELD(m_flDelay, FIELD_FLOAT, "Delay"),
+END_DATADESC()
+
+CTriggerAirpogo::CTriggerAirpogo()
+{
+    m_bAffectStickies = false;
+}
+
+void CTriggerAirpogo::Spawn()
+{
+    BaseClass::Spawn();
+    InitTrigger();
+    AddSpawnFlags(SF_TRIGGER_ALLOW_ALL);
+    AddEffects(EF_NODRAW);
+}
+
+void CTriggerAirpogo::OnStartTouch(CBaseEntity *pOther)
+{
+    CMomRocket *pRocket = dynamic_cast<CMomRocket *>(pOther);
+    if (pRocket)
+    {
+        pRocket->SetFuse(m_flDelay);
+    }
 }
