@@ -368,6 +368,10 @@
     author(string) : "Map Author" : "" : "The map's original author(s)."
 ]
 
+@SolidClass base(MomentumTrigger) = trigger_momentum_airpogo : "Trigger for detonating rockets midair." 
+[
+	Delay(float) : "Delay" : "0.02" : "Set here in seconds how long after entering the trigger should rockets explode."
+]
 //-------------------------------------------------------------------------
 //
 // Weapons
