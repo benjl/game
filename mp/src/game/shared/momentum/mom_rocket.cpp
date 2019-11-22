@@ -188,11 +188,15 @@ void CMomRocket::Explode(trace_t *pTrace, CBaseEntity *pOther)
     SetSolid(SOLID_NONE);
     m_takedamage = DAMAGE_NO;
 
-    // Pull out a bit
-    if (!CloseEnough(pTrace->fraction, 1.0f))
+    if (pTrace)
     {
-        SetAbsOrigin(pTrace->endpos + (pTrace->plane.normal * 1.0f));
+        // Pull out a bit
+        if (!CloseEnough(pTrace->fraction, 1.0f))
+        {
+            SetAbsOrigin(pTrace->endpos + (pTrace->plane.normal * 1.0f));
+        }
     }
+    
 
     Vector vecOrigin = GetAbsOrigin();
     CBaseEntity *pOwner = GetOwnerEntity();
@@ -212,11 +216,14 @@ void CMomRocket::Explode(trace_t *pTrace, CBaseEntity *pOther)
     m_hOwner = nullptr;
 
     StopSound("Missile.Ignite");
-
-    if (!pOther->IsPlayer())
+    if (pOther)
     {
-        UTIL_DecalTrace(pTrace, "Scorch");
+        if (!pOther->IsPlayer())
+        {
+            UTIL_DecalTrace(pTrace, "Scorch");
+        }
     }
+    
 
     // Remove the rocket
     UTIL_Remove(this);
@@ -257,49 +264,13 @@ void CMomRocket::SetFuse(float flFuseLength)
     }
 }
 
-void CMomRocket::ExplodeInPlace() 
-{
-    if (CNoGrenadesZone::IsInsideNoGrenadesZone(this))
-    {
-        Destroy(true);
-        return;
-    }
-
-    // Make invisible
-    SetModelName(NULL_STRING);
-    SetSolid(SOLID_NONE);
-    m_takedamage = DAMAGE_NO;
-
-    Vector vecOrigin = GetAbsOrigin();
-    CBaseEntity *pOwner = GetOwnerEntity();
-
-    float flDamage = GetDamage();
-    float flRadius = GetRadius();
-
-    // Create explosion effect with no damage
-    ExplosionCreate(vecOrigin, GetAbsAngles(), pOwner, flDamage, flRadius, false);
-
-    // Damage
-    CTakeDamageInfo info(this, pOwner, vec3_origin, vecOrigin, flDamage, GetDamageType());
-    RadiusDamage(info, vecOrigin, flRadius, CLASS_NONE, nullptr);
-
-    DestroyTrail();
-
-    m_hOwner = nullptr;
-
-    StopSound("Missile.Ignite");
-
-    // Remove the rocket
-    UTIL_Remove(this);
-}
-
 void CMomRocket::FuseThink()
 {
     if (m_bOnFuse)
     {
         if (gpGlobals->curtime >= m_flFuseTime)
         {
-            ExplodeInPlace();
+            Explode(nullptr, nullptr); // pTrace and pOther are nullptr because the rocket never collided with anything
         }
     }
     SetNextThink(gpGlobals->curtime + 0.0151f);
