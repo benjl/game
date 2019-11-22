@@ -1528,14 +1528,8 @@ bool CNoGrenadesZone::IsInsideNoGrenadesZone(CBaseEntity *pOther)
 LINK_ENTITY_TO_CLASS(trigger_momentum_airpogo, CTriggerAirpogo);
 
 BEGIN_DATADESC(CTriggerAirpogo)
-    // DEFINE_KEYFIELD(m_bAffectStickies, FIELD_BOOLEAN, "AffectStickies"),
-    DEFINE_KEYFIELD(m_flDelay, FIELD_FLOAT, "Delay"),
-END_DATADESC()
-
-CTriggerAirpogo::CTriggerAirpogo()
-{
-    m_bAffectStickies = false;
-}
+    DEFINE_KEYFIELD(m_flDelay, FIELD_FLOAT, "Delay")
+END_DATADESC();
 
 void CTriggerAirpogo::Spawn()
 {

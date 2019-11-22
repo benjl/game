@@ -683,11 +683,9 @@ class CTriggerAirpogo : public CBaseMomentumTrigger
     DECLARE_CLASS(CTriggerAirpogo, CBaseMomentumTrigger);
     DECLARE_DATADESC();
 
-    CTriggerAirpogo();
     void Spawn() override;
     void OnStartTouch(CBaseEntity *pOther) OVERRIDE;
 
   private:
-    bool m_bAffectStickies;
     float m_flDelay;
 };
